@@ -1,18 +1,36 @@
 package org.launchcode.Ch15Lecture.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Entity
 public class Dinosaur {
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
+    //private static int nextId = 1;
+    @NotBlank
+    @Size(min = 3)
     private String species;
+    @NotNull
     private String diet;
-    private boolean aquatic;
+    @NotNull
+    private String aquatic;
 
-    public Dinosaur() {
-        id = nextId;
-        nextId++;
-    }
+    @OneToMany(mappedBy = "dinosaur")
+    private final List<Egg> eggs = new ArrayList<>();
 
-    public Dinosaur(String species, String diet, boolean aquatic) {
+    public Dinosaur() {}
+
+    public Dinosaur(String species, String diet, String aquatic) {
         this();
         this.species = species;
         this.diet = diet;
@@ -20,30 +38,37 @@ public class Dinosaur {
     }
 
     public String getSpecies() {
+
         return species;
     }
 
     public void setSpecies(String species) {
+
         this.species = species;
     }
 
     public String getDiet() {
+
         return diet;
     }
 
     public void setDiet(String diet) {
+
         this.diet = diet;
     }
 
-    public boolean isAquatic() {
+    public String getAquatic() {
+
         return aquatic;
     }
 
-    public void setAquatic(boolean aquatic) {
+    public void setAquatic(String aquatic) {
+
         this.aquatic = aquatic;
     }
 
     public int getId() {
+
         return id;
     }
 }

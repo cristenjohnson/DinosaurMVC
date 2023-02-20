@@ -10,6 +10,13 @@ public class DinoData {
     private static ArrayList<Dinosaur> allDinos = new ArrayList();
 
     public static ArrayList<Dinosaur> getAllDinos() {
+
         return allDinos;
+    }
+    //take in some info to get the type of dino
+    //this will go into the dino object
+    public static void addDino(Dinosaur newDinoObject) {
+
+        allDinos.add(newDinoObject);
     }
 }

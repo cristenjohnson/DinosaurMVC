@@ -8,6 +8,7 @@ public class HomeController {
     //use a method to render the home.html view on localhost
     @GetMapping
     public String home() {
+
         return "home";
     }
 }
